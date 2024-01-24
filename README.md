@@ -47,8 +47,3 @@ This function generates a random biography for the NPC based on the provided nam
 ### `int main()`
 
 The main function of the program handles the user input, generates the NPC information, and saves it to a file. It utilizes the above helper functions to generate the NPC's biography, likes, and personality traits.
-
----
-
-(c) Jack Spencer 2024
-Licensed under the Ludwig License.
