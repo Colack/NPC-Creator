@@ -1,6 +1,8 @@
 /*
-(c) Jack Spencer 2023
-Licensed under the Ludwig License.
+    NPC-Creator
+    A simple program to create a random NPC (Non-Player Character)
+    
+    Usage: ./npc-creator
 */
 
 #include <stdio.h>
@@ -27,12 +29,20 @@ const char* hobbies[] = {
     "playing video games", "watching movies", "watching TV", "listening to music", "playing board games",
     "playing card games", "playing chess", "playing checkers", "playing poker", "playing mahjong",
     "writing stories", "writing poems", "writing songs", "writing code", "writing letters",
-    "making crafts", "making art", "making sculptures", "making pottery", "making jewelry"
+    "making crafts", "making art", "making sculptures", "making pottery", "making jewelry",
+    "dancing", "singing", "playing music", "playing instruments", "playing guitar", "playing piano", "playing drums", "playing violin", "playing cello",
+    "running", "jogging", "walking", "hiking", "biking", "swimming", "skating", "skiing", "snowboarding", "surfing", "skateboarding", "rollerblading",
+    "yoga", "pilates", "meditation", "mindfulness", "relaxation", "breathing exercises", "stretching", "exercise", "working out", "lifting weights", "cardio"
 };
 
 const char* traits[] = {
     "friendly", "optimistic", "creative", "logical", "organized", "charismatic", "adventurous",
     "kind", "caring", "compassionate", "empathetic", "honest", "loyal", "trustworthy", "reliable",
+    "intelligent", "smart", "wise", "knowledgeable", "curious", "inquisitive", "open-minded",
+    "funny", "humorous", "witty", "clever", "silly", "goofy", "playful", "childlike",
+    "confident", "bold", "brave", "courageous", "fearless", "daring", "strong", "assertive",
+    "calm", "peaceful", "relaxed", "serene", "tranquil", "composed", "cool", "collected",
+    "energetic", "active", "dynamic", "vibrant", "lively", "enthusiastic", "passionate", "excited"
 };
 
 void generate_likes(char* likes) {
@@ -106,18 +116,19 @@ void generate_bio(char* bio, const char* name, const char* gender) {
     printf("%s\n", personality);
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     srand(time(NULL));
+
+    // Instead of asking for the NPC's name and gender, we can just grab them from the command line arguments
+    if (argc != 3) {
+        printf("Usage: npc-creator [name] [gender]\n");
+        return 1;
+    }
 
     NPC npc;
     
-    printf("Enter NPC name: ");
-    fgets(npc.name, sizeof(npc.name), stdin);
-    npc.name[strcspn(npc.name, "\n")] = '\0'; // remove trailing newline
-    
-    printf("Enter NPC gender: ");
-    fgets(npc.gender, sizeof(npc.gender), stdin);
-    npc.gender[strcspn(npc.gender, "\n")] = '\0'; // remove trailing newline
+    npc.name[0] = argv[1];
+    npc.gender[0] = argv[2];
 
     // Generate NPC information
     sprintf(npc.biography, "%s is a %s NPC. ", npc.name, npc.gender);

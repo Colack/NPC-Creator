@@ -1,0 +1,7 @@
+# Ignore .npc files
+*.npc
+npc-creator
+npc-reader
+*.exe
+*.dll
+*.pdb
